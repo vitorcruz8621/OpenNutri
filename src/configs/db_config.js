@@ -18,7 +18,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 sequelize
   .authenticate()
   .then(() => {
-    console.log("Conexão com o banco de dados estabelecida com sucesso.");
+    console.log("Autenticação bem-sucedida.");
   })
   .catch((error) => {
     console.error("Não foi possível conectar ao banco de dados:", error);
