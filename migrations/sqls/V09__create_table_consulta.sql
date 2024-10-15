@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS public.CONSULTA (
+CREATE TABLE IF NOT EXISTS public.consulta (
     id SERIAL PRIMARY KEY,
     nutricionista_id INTEGER NOT NULL,
     paciente_id INTEGER NOT NULL,
@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS public.CONSULTA (
     observacoes TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (nutricionista_id) REFERENCES public.Nutricionista(id),
-    FOREIGN KEY (paciente_id) REFERENCES public.PACIENTE(id)
+    FOREIGN KEY (nutricionista_id) REFERENCES public.nutricionista(id),
+    FOREIGN KEY (paciente_id) REFERENCES public.paciente(id)
 );

@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS public.meta (
     data_inicio TIMESTAMP NOT NULL,
     data_fim TIMESTAMP NOT NULL,
     status_meta_id INTEGER NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW(),
-    updated_at TIMESTAMP DEFAULT NOW(),
-    FOREIGN KEY (paciente_id) REFERENCES public.Paciente(id),
-    FOREIGN KEY (tipo_meta_id) REFERENCES public.TipoMeta(id),
-    FOREIGN KEY (status_meta_id) REFERENCES public.StatusMeta(id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (paciente_id) REFERENCES public.paciente(id),
+    FOREIGN KEY (tipo_meta_id) REFERENCES public.tipo_meta(id),
+    FOREIGN KEY (status_meta_id) REFERENCES public.status_meta(id)
 );
