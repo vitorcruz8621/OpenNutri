@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/db_config.js";
+import sequelize from "../configs/db_config.js";
 
 const Paciente = sequelize.define(
   "Paciente",
@@ -10,11 +10,11 @@ const Paciente = sequelize.define(
       primaryKey: true,
     },
     nome: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(100),
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(50),
       allowNull: false,
       unique: true,
     },
@@ -41,6 +41,7 @@ const Paciente = sequelize.define(
     tableName: "paciente",
     schema: "public",
     timestamps: false,
+    underscored: true,
   }
 );
 

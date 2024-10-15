@@ -1,6 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import nutricionistaRoutes from "./src/routes/nutricionistaRouter.js";
+import pacienteRoutes from "./src/routes/pacienteRouter.js";
+import consultaRoutes from "./src/routes/consultaRouter.js";
+import metaRoutes from "./src/routes/metaRouter.js";
 import sequelize from "./src/configs/db_config.js";
 
 dotenv.config();
@@ -10,6 +13,9 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/api", nutricionistaRoutes);
+app.use("/api", pacienteRoutes);
+app.use("/api", consultaRoutes);
+app.use("/api", metaRoutes);
 
 app.listen(port, async () => {
   try {

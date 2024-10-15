@@ -1,29 +1,39 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../configs/db_config.js";
 
-const Nutricionista = sequelize.define(
-  "Nutricionista",
+const Consulta = sequelize.define(
+  "Consulta",
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    nome: {
-      type: DataTypes.STRING(100),
+    nutricionistaId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      field: "nutricionista_id",
+      references: {
+        model: "Nutricionista",
+        key: "id",
+      },
     },
-    email: {
-      type: DataTypes.STRING(50),
+    pacienteId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
+      field: "paciente_id",
+      references: {
+        model: "Paciente",
+        key: "id",
+      },
     },
-    senha: {
-      type: DataTypes.STRING,
+    dataConsulta: {
+      type: DataTypes.DATE,
       allowNull: false,
+      field: "data_consulta",
     },
-    telefone: {
-      type: DataTypes.STRING,
+    observacoes: {
+      type: DataTypes.TEXT,
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -37,11 +47,11 @@ const Nutricionista = sequelize.define(
     },
   },
   {
-    tableName: "nutricionista",
+    tableName: "consulta",
     schema: "public",
     timestamps: false,
     underscored: true,
   }
 );
 
-export default Nutricionista;
+export default Consulta;

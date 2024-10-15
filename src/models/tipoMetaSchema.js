@@ -1,29 +1,17 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../configs/db_config.js";
 
-const Nutricionista = sequelize.define(
-  "Nutricionista",
+const TipoMeta = sequelize.define(
+  "TipoMeta",
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
     },
-    nome: {
-      type: DataTypes.STRING(100),
+    descricao: {
+      type: DataTypes.STRING(255),
       allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
-      unique: true,
-    },
-    senha: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    telefone: {
-      type: DataTypes.STRING,
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -37,11 +25,11 @@ const Nutricionista = sequelize.define(
     },
   },
   {
-    tableName: "nutricionista",
+    tableName: "tipo_meta",
     schema: "public",
     timestamps: false,
     underscored: true,
   }
 );
 
-export default Nutricionista;
+export default TipoMeta;
