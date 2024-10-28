@@ -1,9 +1,25 @@
 import Consulta from "../models/consultaSchema.js";
 import Nutricionista from "../models/nutricionistaSchema.js";
 import Paciente from "../models/pacienteSchema.js";
+import { Op } from "sequelize";
 
-const getConsultaByPk = async (id) => {
-  return await Consulta.findByPk(id, {
+const getAllConsultasByFilters = async ({ nomePaciente, nomeNutricionista, dataConsulta }) => {
+  const whereClause = {};
+  
+  if (nomePaciente) {
+    whereClause['$paciente.nome$'] = { [Op.like]: `%${nomePaciente}%` };
+  }
+  
+  if (nomeNutricionista) {
+    whereClause['$nutricionista.nome$'] = { [Op.like]: `%${nomeNutricionista}%` };
+  }
+
+  if (dataConsulta) {
+    whereClause['data_consulta'] = { [Op.like]: `%${dataConsulta}%` };
+  }
+
+  return await Consulta.findAll({
+    where: whereClause,
     include: [
       { model: Nutricionista, as: "nutricionista" },
       { model: Paciente, as: "paciente" },
@@ -11,8 +27,14 @@ const getConsultaByPk = async (id) => {
   });
 };
 
-const getConsultasByFilters = async (filters) => {
-  };
+const getConsultaByIdPk = async (id) => {
+  return await Consulta.findByPk(id, {
+    include: [
+      { model: Nutricionista, as: "nutricionista" },
+      { model: Paciente, as: "paciente" },
+    ],
+  });
+};
 
 const createConsulta = async (consultaData) => {
   const nutricionista = await Nutricionista.findByPk(
@@ -49,7 +71,8 @@ const updateConsulta = async (id, consultaData) => {
 };
 
 export default {
-  getConsultaByPk,
+  getConsultaByIdPk,
+  getAllConsultasByFilters,
   createConsulta,
   deleteConsulta,
   updateConsulta,

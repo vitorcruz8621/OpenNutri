@@ -3,9 +3,8 @@ import consultaController from "../controllers/consultaController.js";
 
 const router = Router();
 
-router.get("/consultas", consultaController.getAllConsultas);
-router.get("/consultas/:id", consultaController.getConsulta);
-router.get("/consultas/data", consultaController.getConsultaDataConsulta);
+router.get("/consultas", consultaController.getAllConsultasByFilters);
+router.get("/consultas/:id", consultaController.getConsultaByIdPk );
 router.post("/consultas", consultaController.createConsulta);
 router.delete("/consultas/:id", consultaController.deleteConsulta);
 router.put("/consultas/:id", consultaController.updateConsulta);
