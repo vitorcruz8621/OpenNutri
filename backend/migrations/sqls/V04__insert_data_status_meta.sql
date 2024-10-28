@@ -1,0 +1,1 @@
+INSERT INTO public.status_meta (descricao) VALUES ('Em Andamento'),('Pendente'),('Cancelada'),('Concluída') ON CONFLICT DO NOTHING;
