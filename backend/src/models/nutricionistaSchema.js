@@ -26,7 +26,11 @@ const Nutricionista = sequelize.define(
       allowNull: false,
     },
     telefone: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(11),
+      allowNull: false,
+      validate: {
+        is: /^\d{11}$/gm,
+      }
     },
   },
   {

@@ -34,6 +34,25 @@ const Consulta = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: false,
       field: "data_consulta",
+      validate: {
+        is: /^(?:[01]\d|2[0-3]):[0-5]\d$/gm
+      }
+    },
+    horarioInicio: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      field: "horario_inicio",
+      validate: {
+        is: /^(?:[01]\d|2[0-3]):[0-5]\d$/gm
+      }
+    },
+    horarioTermino: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      field: "horario_termino",
+      validate: {
+        is: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([0-9]{4})$/gm,
+      }
     },
     observacoes: {
       type: DataTypes.TEXT,

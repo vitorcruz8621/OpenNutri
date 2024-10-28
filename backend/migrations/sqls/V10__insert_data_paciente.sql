@@ -1,4 +1,4 @@
-INSERT INTO public.paciente (nome, email, data_nascimento, telefone, senha)
+INSERT INTO public.paciente (nome, email, data_nascimento, telefone, senha) 
 VALUES 
 ('Ana Costa', 'ana.costa@gmail.com', '15/11/2024', '11987654321', 'senhaAna123'),
 ('Bruno Alves', 'bruno.alves@gmail.com', '22/03/1985', '21987654322', 'senhaBruno456'),

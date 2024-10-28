@@ -32,6 +32,9 @@ const Paciente = sequelize.define(
     telefone: {
       type: DataTypes.STRING(11),
       allowNull: false,
+      validate: {
+        is: /^\d{11}$/gm,
+      }
     },
     senha: {
       type: DataTypes.TEXT,

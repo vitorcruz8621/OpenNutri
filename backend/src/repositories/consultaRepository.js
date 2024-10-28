@@ -1,6 +1,7 @@
 import Consulta from "../models/consultaSchema.js";
 import Nutricionista from "../models/nutricionistaSchema.js";
 import Paciente from "../models/pacienteSchema.js";
+import StatusConsulta from "../models/statusConsultaSchema.js";
 import { Op } from "sequelize";
 
 const getAllConsultasByFilters = async ({ nomePaciente, nomeNutricionista, dataConsulta }) => {
@@ -23,6 +24,7 @@ const getAllConsultasByFilters = async ({ nomePaciente, nomeNutricionista, dataC
     include: [
       { model: Nutricionista, as: "nutricionista" },
       { model: Paciente, as: "paciente" },
+      { model: StatusConsulta, as: "status" }
     ],
   });
 };
@@ -32,6 +34,7 @@ const getConsultaByIdPk = async (id) => {
     include: [
       { model: Nutricionista, as: "nutricionista" },
       { model: Paciente, as: "paciente" },
+      { model: StatusConsulta, as: "status" },
     ],
   });
 };

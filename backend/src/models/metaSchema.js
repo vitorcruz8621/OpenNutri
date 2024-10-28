@@ -34,11 +34,17 @@ const Meta = sequelize.define(
       type: DataTypes.TEXT,
       allowNull: false,
       field: "data_inicio",
+      validate: {
+        is: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([0-9]{4})$/gm,
+      }
     },
     dataFim: {
       type: DataTypes.TEXT,
       allowNull: false,
       field: "data_fim",
+      validate: {
+        is: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/([0-9]{4})$/gm,
+      }
     },
     statusMetaId: {
       type: DataTypes.INTEGER,
