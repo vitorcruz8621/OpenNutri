@@ -1,9 +1,0 @@
-CREATE TABLE public.nutricionista (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    senha TEXT NOT NULL,
-    telefone VARCHAR,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);

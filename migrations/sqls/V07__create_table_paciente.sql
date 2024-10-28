@@ -1,9 +1,0 @@
-CREATE TABLE public.paciente (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(50) NOT NULL UNIQUE,
-    data_nascimento TIMESTAMP NOT NULL,
-    telefone VARCHAR(20),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
