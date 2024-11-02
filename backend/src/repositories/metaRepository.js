@@ -3,8 +3,31 @@ import Paciente from "../models/pacienteSchema.js";
 import TipoMeta from "../models/tipoMetaSchema.js";
 import StatusMeta from "../models/statusMetaSchema.js";
 
-const getAllMetas = async () => {
+const getAllMetasByFilters = async ({ pacienteId, tipoMetaId, dataInicio , dataFim, statusMetaId}) => {
+  const whereClause = {};
+  
+  if (pacienteId) {
+    whereClause['meta.paciente_id'] = { [Op.eq]: `%${pacienteId}%` };
+  }
+  
+  if (nomeNutricionista) {
+    whereClause['tipo_meta_id'] = { [Op.like]: `%${tipoMetaId}%` };
+  }
+
+  if (dataInicio) {
+    whereClause['data_inicio'] = { [Op.like]: `%${dataInicio}%` };
+  }
+
+  if (dataFim) {
+    whereClause['data_fim'] = { [Op.like]: `%${dataFim}%` };
+  }
+
+  if (statusMetaId) {
+    whereClause['status_meta_id'] = { [Op.eq]: `%${statusMetaId}%` };
+  }
+
   return await Meta.findAll({
+    where: whereClause,
     include: [
       { model: Paciente, as: "paciente" },
       { model: TipoMeta, as: "tipoMeta" },
@@ -61,7 +84,7 @@ const updateMeta = async (id, metaData) => {
 };
 
 export default {
-  getAllMetas,
+  getAllMetasByFilters,
   getMetaByPk,
   createMeta,
   deleteMeta,

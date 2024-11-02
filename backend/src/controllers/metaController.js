@@ -1,18 +1,26 @@
 import metaService from "../services/metaService.js";
 
-const getAllMetas = async (req, res) => {
+const getAllMetasByFilters = async (req, res) => {
   try {
-    const metas = await metaService.getAllMetas();
+    const { pacienteId, tipoMetaId, dataInicio , dataFim, statusMetaId} = req.query;
+    const jsonFilter = { pacienteId, tipoMetaId, dataInicio , dataFim, statusMetaId};
+    const metas = await metaService.getAllMetas(jsonFilter);
+
+    if (Array.isArray(metas) && metas.length === 0) {
+      res.status(404).json({ message: "Nenhuma meta cadastrada" });
+      return;
+    }
+
     res.status(200).json(metas);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-const getMeta = async (req, res) => {
+const getMetaByPk = async (req, res) => {
   try {
     const id = req.params.id;
-    const meta = await metaService.getMeta(id);
+    const meta = await metaService.getMetaByPk(id);
     if (meta) {
       res.status(200).json(meta);
     } else {
@@ -81,8 +89,8 @@ const updateMeta = async (req, res) => {
 };
 
 export default {
-  getAllMetas,
-  getMeta,
+  getAllMetasByFilters,
+  getMetaByPk,
   createMeta,
   deleteMeta,
   updateMeta,

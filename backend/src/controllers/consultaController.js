@@ -5,6 +5,12 @@ const getAllConsultasByFilters = async (req, res) => {
     const { nomePaciente, nomeNutricionista, dataConsulta } = req.query;
     const jsonFilter = { nomePaciente, nomeNutricionista , dataConsulta};
     const consultas = await consultaService.getAllConsultasByFilters(jsonFilter);
+
+    if (Array.isArray(consultas) && consultas.length === 0) {
+      res.status(404).json({ message: "Nenhuma consulta cadastrada" });
+      return;
+    }
+
     res.status(200).json(consultas);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -54,10 +60,12 @@ const deleteConsulta = async (req, res) => {
 const updateConsulta = async (req, res) => {
   try {
     const id = req.params.id;
-    const { dataConsulta, observacoes } = req.body;
+    const { dataConsulta, horarioInicio, horarioTermino, observacoes } = req.body;
     const consultaData = {};
 
     if (dataConsulta) consultaData.dataConsulta = dataConsulta;
+    if (horarioInicio) consultaData.horarioInicio = horarioInicio;
+    if (horarioTermino) consultaData.horarioTermino = horarioTermino;
     if (observacoes) consultaData.observacoes = observacoes;
 
     const updatedConsulta = await consultaService.updateConsulta(
