@@ -64,7 +64,6 @@ const Meta = sequelize.define(
   }
 );
 
-// Definir associações
 Meta.belongsTo(Paciente, { as: "paciente", foreignKey: "pacienteId" });
 Meta.belongsTo(TipoMeta, { as: "tipoMeta", foreignKey: "tipoMetaId" });
 Meta.belongsTo(StatusMeta, { as: "statusMeta", foreignKey: "statusMetaId" });

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "debug": "nodemon --inspect server.js"
   },
   "jest": {
@@ -19,13 +19,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "express-graphql": "^0.12.0",
-    "graphql": "^16.9.0",
     "pg": "^8.13.0",
-    "sequelize": "^6.37.3"
+    "sequelize": "^6.37.3",
+    "supertest": "^7.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.25.8",

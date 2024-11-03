@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../configs/db_config.js";
 import Nutricionista from "./nutricionistaSchema.js";
 import Paciente from "./pacienteSchema.js";
-import StatusConsulta from "./statusConsultaSchema.js"; // Importar o novo modelo
+import StatusConsulta from "./statusConsultaSchema.js";
 
 const Consulta = sequelize.define(
   "Consulta",
