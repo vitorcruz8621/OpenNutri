@@ -1,7 +1,13 @@
 import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
@@ -11,6 +17,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     ssl: {
       require: true,
       rejectUnauthorized: false,
+      ca: fs.readFileSync(path.resolve(__dirname, "../../ca.crt")).toString(),
     },
   },
 });

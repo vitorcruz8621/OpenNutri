@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import nutricionistaRoutes from "./src/routes/nutricionistaRouter.js";
 import pacienteRoutes from "./src/routes/pacienteRouter.js";
 import statusConsultaRoutes from "./src/routes/statusConsultaRouter.js";
+import statusMetaRoutes from "./src/routes/statusMetaRouter.js";
 import tipoMetaRoutes from "./src/routes/tipoMetaRouter.js";
 import consultaRoutes from "./src/routes/consultaRouter.js";
 import metaRoutes from "./src/routes/metaRouter.js";
